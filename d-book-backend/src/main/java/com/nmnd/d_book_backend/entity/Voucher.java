@@ -13,7 +13,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -32,11 +31,11 @@ public class Voucher {
     LocalDate startDate;
     LocalDate endDate;
     int quantity;
-    boolean isActive;
+    boolean active;
 
     LocalDateTime createdTime;
     LocalDateTime updatedTime;
 
-    @OneToMany(mappedBy = "voucherId")
+    @OneToMany(mappedBy = "voucher")
     List<Receipt> receipts;
 }

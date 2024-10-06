@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -23,9 +22,9 @@ public class GoodsReceiptDetails {
 
     @ManyToOne
     @JoinColumn(name = "book_id")
-    Book bookId;
+    Book book;
 
     @ManyToOne
     @JoinColumn(name = "goods_receipt_id")
-    GoodsReceipt goodsReceiptId;
+    GoodsReceipt goodsReceipt;
 }

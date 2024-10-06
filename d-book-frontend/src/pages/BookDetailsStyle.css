@@ -1,0 +1,8 @@
+.toast-custom {
+    position: fixed;
+    bottom: 50px;
+    left: 45%;
+    z-index: 1500;
+    width: auto;
+  }
+  

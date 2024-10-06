@@ -9,7 +9,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -22,11 +21,11 @@ public class Supplier {
     String phone;
     String email;
     String address;
-    boolean isActive;
+    boolean active;
 
     LocalDateTime createdTime;
     LocalDateTime updatedTime;
 
-    @OneToMany(mappedBy = "supplierId")
+    @OneToMany(mappedBy = "supplier")
     Set<GoodsReceipt> goodsReceipts;
 }

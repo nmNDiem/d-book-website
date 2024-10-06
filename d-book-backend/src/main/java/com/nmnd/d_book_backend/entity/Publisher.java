@@ -10,16 +10,16 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class Publisher {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)   // cac chuoi random ngau nhien
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
-    @OneToMany(mappedBy = "publisherId")
+
+    @OneToMany(mappedBy = "publisher")
     Set<Book> books;
 }

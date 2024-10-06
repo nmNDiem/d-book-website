@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -25,8 +24,8 @@ public class GoodsReceipt {
 
     @ManyToOne
     @JoinColumn(name = "supplier_id")
-    Supplier supplierId;
+    Supplier supplier;
 
-    @OneToMany(mappedBy = "goodsReceiptId")
+    @OneToMany(mappedBy = "goodsReceipt")
     Set<GoodsReceiptDetails> goodsReceiptDetails;
 }

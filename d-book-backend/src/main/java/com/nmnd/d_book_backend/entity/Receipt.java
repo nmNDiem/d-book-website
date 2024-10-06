@@ -11,7 +11,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -24,19 +23,23 @@ public class Receipt {
     LocalDateTime createdTime;
     LocalDateTime paymentTime;
     String status;
+    String customerName;
+    String customerPhone;
+    String customerEmail;
+    String customerAddess;
 
     @ManyToOne
     @JoinColumn(name = "payment_method_id")
-    PaymentMethod paymentMethodId;
+    PaymentMethod paymentMethod;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User userId;
+    User user;
 
-    @OneToMany(mappedBy = "receiptId")
+    @OneToMany(mappedBy = "receipt")
     List<ReceiptDetails> receiptDetails;
 
     @ManyToOne
     @JoinColumn(name = "voucher_id")
-    Voucher voucherId;
+    Voucher voucher;
 }

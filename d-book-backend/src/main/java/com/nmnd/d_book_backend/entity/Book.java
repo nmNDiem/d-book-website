@@ -12,48 +12,51 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)   // cac chuoi random ngau nhien
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String title;
     int pages;
-    String ISBN;
+    String isbn;
+    @Column(columnDefinition = "LONGTEXT")
     String description;
     int publishedYear;
     String image;
     BigDecimal price;
-    int discountPercent;
+    BigDecimal discountPercent;
     float rating;
     int stock;
-    boolean isActive;
+    boolean active;
 
     LocalDateTime createdTime;
     LocalDateTime updatedTime;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    Category categoryId;
+    Category category;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    Author authorId;
+    Author author;
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
-    Publisher publisherId;
+    Publisher publisher;
 
-    @OneToMany(mappedBy = "bookId")
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     List<Review> reviews;
 
-    @OneToMany(mappedBy = "bookId")
+    @OneToMany(mappedBy = "book")
     Set<GoodsReceiptDetails> goodsReceiptDetails;
 
-    @OneToMany(mappedBy = "bookId")
+    @OneToMany(mappedBy = "book")
     List<ReceiptDetails> receiptDetails;
+
+    @OneToMany(mappedBy = "book")
+    List<CartDetails> cartDetails;
 }

@@ -1,0 +1,41 @@
+.book-card {
+    width: 10.05rem;
+    border: none;
+    /* background-color: transparent; */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+    /* Tăng kích thước khi hover */
+}
+
+.card-img {
+    width: auto;
+    height: 180px;
+    object-fit: contain;
+    /* border: none; */
+    /* background-color: transparent; */
+}
+
+.card-title {
+    font-size: 1rem;
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+
+    display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 3em;
+  white-space: normal;
+  line-height: 1.5em;
+}
+
+.card-text {
+    color: tomato;
+}

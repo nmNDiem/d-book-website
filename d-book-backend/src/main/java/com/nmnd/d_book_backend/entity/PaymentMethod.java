@@ -8,7 +8,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -19,6 +18,6 @@ public class PaymentMethod {
     int id;
     String name;
 
-    @OneToMany(mappedBy = "paymentMethodId")
+    @OneToMany(mappedBy = "paymentMethod")
     List<Receipt> receipts;
 }

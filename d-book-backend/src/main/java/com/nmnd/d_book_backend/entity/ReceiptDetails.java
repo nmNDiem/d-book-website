@@ -9,23 +9,22 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class ReceiptDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)   // cac chuoi random ngau nhien
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     int quantity;
     BigDecimal unitPrice;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
-    Book bookId;
+    Book book;
 
     @ManyToOne
     @JoinColumn(name = "receipt_id")
-    Receipt receiptId;
+    Receipt receipt;
 }

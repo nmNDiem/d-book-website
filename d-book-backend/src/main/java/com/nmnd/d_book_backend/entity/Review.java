@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -25,9 +24,9 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User userId;
+    User user;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
-    Book bookId;
+    Book book;
 }

@@ -5,24 +5,21 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
-@Getter
-@Setter
-@Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)   // cac chuoi random ngau nhien
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
     String description;
-    boolean isActive;
+    boolean active;
 
-    @OneToMany(mappedBy = "categoryId")
+    @OneToMany(mappedBy = "category")
     Set<Book> books;
 }

@@ -7,10 +7,10 @@ import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -27,7 +27,7 @@ public class User {
     String phone;
     String address;
     String avatar;
-    boolean isActive;
+    boolean active;
 
     LocalDateTime createdTime;
     LocalDateTime updatedTime;
@@ -35,6 +35,12 @@ public class User {
 //    @ManyToMany
 //    Set<Role> roles;
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     List<Receipt> receipts;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    Cart cart;
+
+    @OneToMany(mappedBy = "user")
+    List<Review> reviews;
 }
