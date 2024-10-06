@@ -31,22 +31,40 @@ const Cart = () => {
     // Cập nhật cookie
     cookie.save('cart', { ...cart, [id]: { ...cart[id], quantity: newQuantity } });
 
-    dispatch({
-        type: 'updateQuantity', 
-        payload: { id, quantity: newQuantity }
-    });
+    updateCart();
 };
+
+const updateCart = () => {
+  dispatch({
+      type: 'updateCart',
+      payload: countCart()
+  })
+}
+
+const countCart = () => {
+  let count = 0;
+  let cart = cookie.load("cart") || null;
+
+  if (cart !== null) {
+    for (let c of Object.values(cart))
+      count += c.quantity;
+  }
+
+  return count;
+}
 
   const handleRemoveFromCart = (id) => {
     const newCart = { ...cart };
     delete newCart[id];
     setCart(newCart);
     cookie.save('cart', newCart);
+    updateCart();
   };
 
   const handleClearCart = () => {
     setCart({});
     cookie.remove('cart');
+    updateCart();
   };
 
   return (

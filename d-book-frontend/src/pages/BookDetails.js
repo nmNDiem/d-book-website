@@ -49,12 +49,15 @@ const BookDetails = () => {
     }
 
     cookie.save("cart", cart);
-    dispatch({
-      type: 'updateCart',
-      payload: countCart()
-    })
-
+    updateCart();
   }
+
+  const updateCart = () => {
+    dispatch({
+        type: 'updateCart',
+        payload: countCart()
+    })
+}
 
   const countCart = () => {
     let count = 0;

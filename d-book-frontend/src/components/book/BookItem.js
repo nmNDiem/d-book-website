@@ -8,48 +8,52 @@ import { CartContext } from '../../configs/Contexts';
 import cookie from "react-cookies";
 
 const BookItem = ({ book }) => {
-    const {quantityInCart, dispatch} = useContext(CartContext);
+    const { quantityInCart, dispatch } = useContext(CartContext);
     const navigate = useNavigate();
 
     const addToCart = (book) => {
         let cart = cookie.load("cart") || null;
         if (cart === null)
-          cart = {};
-    
+            cart = {};
+
         if (book.id in cart) {
-          // có trong giỏ, tăng số lượng
-          cart[book.id]["quantity"]++;
+            // có trong giỏ, tăng số lượng
+            cart[book.id]["quantity"]++;
         } else {
-          // chưa có trong giỏ, tạo sách mới
-          cart[book.id] = {
-            "id": book.id,
-            "image": book.image,
-            "title": book.title,
-            "price": book.price,
-            "discountPercent": book.discountPercent,
-            "quantity": 1
-          }
+            // chưa có trong giỏ, tạo sách mới
+            cart[book.id] = {
+                "id": book.id,
+                "image": book.image,
+                "title": book.title,
+                "price": book.price,
+                "discountPercent": book.discountPercent,
+                "quantity": 1
+            }
         }
-    
+
         cookie.save("cart", cart);
+        updateCart();
+    }
+
+
+    const updateCart = () => {
         dispatch({
-          type: 'updateCart',
-          payload: countCart()
+            type: 'updateCart',
+            payload: countCart()
         })
-    
-      }
-    
-      const countCart = () => {
+    }
+
+    const countCart = () => {
         let count = 0;
         let cart = cookie.load("cart") || null;
-    
+
         if (cart !== null) {
-          for (let c of Object.values(cart))
-            count += c.quantity;
+            for (let c of Object.values(cart))
+                count += c.quantity;
         }
-    
+
         return count;
-      }
+    }
 
     const goToBookDetails = (id) => {
         navigate(`/books/${id}`);
