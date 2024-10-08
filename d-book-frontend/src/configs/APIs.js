@@ -6,6 +6,8 @@ const BASE_URL = 'http://localhost:8080/dbook/';
 export const endpoints = {
     'books': '/books',
     'book-details': (bookId) => `/books/${bookId}`,
+    'categories': '/categories',
+    'receipts': '/receipts',
     'register': '/api/users/',
     'login': '/api/login/',
     'current-user': '/api/current-user/',

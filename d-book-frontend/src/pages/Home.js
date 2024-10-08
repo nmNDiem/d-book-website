@@ -22,14 +22,16 @@ const Home = () => {
 
 
   return (
+    <>
+    <Banner />
     <Container className='mb-4'>
-      <Banner />
+      
 
       <h2 className='mt-4 mb-2'>Đang giảm giá</h2>
-      <Row className="g-1">
+      <Row className="g-1 product-slider">
         {books.map((book) => (
           <Col key={book.id} md={2}>
-            <BookItem book={book}/>
+            <BookItem book={book} className="product"/>
           </Col>
         ))}
       </Row>
@@ -61,6 +63,7 @@ const Home = () => {
         ))}
       </Row>
     </Container>
+    </>
   );
 };
 

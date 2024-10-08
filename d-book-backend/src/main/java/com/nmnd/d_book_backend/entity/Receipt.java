@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -26,7 +27,7 @@ public class Receipt {
     String customerName;
     String customerPhone;
     String customerEmail;
-    String customerAddess;
+    String customerAddress;
 
     @ManyToOne
     @JoinColumn(name = "payment_method_id")
@@ -37,7 +38,7 @@ public class Receipt {
     User user;
 
     @OneToMany(mappedBy = "receipt")
-    List<ReceiptDetails> receiptDetails;
+    List<ReceiptDetails> receiptDetails = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "voucher_id")

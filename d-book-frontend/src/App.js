@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <CartContext.Provider value={{quantityInCart, dispatch}}>
         <Header />
-        <Container>
+        {/* <Container> */}
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
@@ -28,7 +28,7 @@ function App() {
             <Route path='/books/:bookId' element={<BookDetails />} />
             <Route path='/cart' element={<Cart />} />
           </Routes>
-        </Container>
+        {/* </Container> */}
         <Footer />
         </CartContext.Provider>
     </BrowserRouter>

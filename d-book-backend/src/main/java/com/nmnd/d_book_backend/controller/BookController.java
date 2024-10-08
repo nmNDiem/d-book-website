@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/books")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
 public class BookController {
     @Autowired
     private BookService bookService;

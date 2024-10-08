@@ -1,13 +1,29 @@
 // Header.js
-import React, { useContext } from 'react';
-import { Navbar, Nav, NavDropdown, Form, Button, Badge, Container } from 'react-bootstrap';
+import React, { useContext, useEffect, useState } from 'react';
+import { Navbar, Nav, NavDropdown, Form, Button, Badge, Container, Placeholder, Spinner } from 'react-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import './HeaderStyle.css';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../configs/Contexts';
+import APIs, { endpoints } from '../../configs/APIs';
 
 const Header = () => {
-  const { quantityInCart, dispatch } = useContext(CartContext);
+  const { quantityInCart, } = useContext(CartContext);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        let res = await APIs.get(endpoints['categories']);
+        setCategories(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    loadCategories();
+  }, []);
+
 
   return (
     <Navbar bg="light" expand="lg" sticky="top" className='shadow'>
@@ -20,12 +36,13 @@ const Header = () => {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
             <Nav.Link as={Link} to={"/"}>Trang chủ</Nav.Link>
-            <NavDropdown title="Danh mục sách" id="navbarScrollingDropdown" className="hover-dropdown">
-              <NavDropdown.Item href="/category/science">Khoa học</NavDropdown.Item>
-              <NavDropdown.Item href="/category/literature">Văn học</NavDropdown.Item>
-              <NavDropdown.Item href="/category/business">Kinh doanh</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/category/all">Tất cả danh mục</NavDropdown.Item>
+
+            <NavDropdown title="Danh mục" id="navbarScrollingDropdown" className="hover-dropdown">
+              {categories.length === 0
+                ? <Spinner animation="border" variant="secondary" />
+                : categories.map((cate) => (
+                  <NavDropdown.Item key={cate.id}>{cate.name}</NavDropdown.Item>
+                ))}
             </NavDropdown>
           </Nav>
 
