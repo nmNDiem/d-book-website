@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import Banner from '../components/banner/Banner';
-import BookItem from '../components/book/BookItem';
-import APIs, { endpoints } from '../configs/APIs';
+import Banner from '../banner/Banner';
+import BookItem from '../book/BookCard';
+import APIs, { endpoints } from '../../configs/APIs';
 
 const Home = () => {
   const [books, setBooks] = useState([]);

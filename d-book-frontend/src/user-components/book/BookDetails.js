@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button, Form, Spinner, Badge, Table } from 'react-bootstrap';
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
-import APIs, { endpoints } from '../configs/APIs';
+import APIs, { endpoints } from '../../configs/APIs';
 import { FaCartPlus } from 'react-icons/fa';
 import './BookDetailsStyle.css';
-import { formatCurrency } from '../utils/currencyUtils';
+import { formatCurrency } from '../../utils/currencyUtils';
 import cookie from "react-cookies";
-import { CartContext } from '../configs/Contexts';
+import { CartContext } from '../../configs/Contexts';
 
 const BookDetails = () => {
   const { bookId } = useParams();

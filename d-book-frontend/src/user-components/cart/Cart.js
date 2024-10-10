@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Container, Table, Button, Form, Card, Image, Row, Col } from 'react-bootstrap';
-import { formatCurrency } from '../utils/currencyUtils';
+import { formatCurrency } from '../../utils/currencyUtils';
 import cookie from "react-cookies";
 import './CartStyle.css';
 import { IoTrashOutline } from 'react-icons/io5';
-import { CartContext } from '../configs/Contexts';
+import { CartContext } from '../../configs/Contexts';
 import { Checkbox } from '@mui/material';
-import APIs, { endpoints } from '../configs/APIs';
+import APIs, { endpoints } from '../../configs/APIs';
 
 const Cart = () => {
   const { dispatch } = useContext(CartContext);

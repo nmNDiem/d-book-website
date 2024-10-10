@@ -52,9 +52,9 @@ const Register = () => {
         <Container className="d-flex align-items-center justify-content-center my-3" style={{ minHeight: "100vh" }}>
             <Row className="w-100 justify-content-center">
                 <Col xs={12} md={6} lg={5}>
-                    <Card className="shadow">
+                    <Card className="shadow custom-card">
                         <Card.Body>
-                            <h2 className="text-center mb-4">Đăng Ký</h2>
+                            <h2 className="text-center mb-4">ĐĂNG KÝ</h2>
 
                             <Form onSubmit={handleSubmit}>
 
@@ -91,7 +91,7 @@ const Register = () => {
                                 </Form.Group>
 
                                 {/* Upload avatar */}
-                                <Form.Group id="avatar" className="mb-2">
+                                <Form.Group id="avatar" className="mb-4">
                                     <Form.Label>Ảnh Đại Diện</Form.Label>
                                     <Form.Control
                                         type="file"
@@ -101,7 +101,7 @@ const Register = () => {
                                     />
                                 </Form.Group>
 
-                                <Button className="w-100 my-3" type="submit">Đăng Ký</Button>
+                                <Button className="custom-button" type="submit">ĐĂNG KÝ</Button>
 
                                 {error && <Alert variant="danger">{error}</Alert>}
 

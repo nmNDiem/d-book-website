@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Alert, Button, Card } from 'react-bootstrap';
-import './BookItemStyle.css';
+import './BookCardStyle.css';
 import { useNavigate } from 'react-router-dom';
 import { formatCurrency } from '../../utils/currencyUtils';
 import { FaCartPlus } from 'react-icons/fa';

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   height: 100vh;
   background:
     radial-gradient(circle at 10% 20%, rgba(219, 255, 226, 0.7), rgba(255, 255, 255, 0.5) 30%),
