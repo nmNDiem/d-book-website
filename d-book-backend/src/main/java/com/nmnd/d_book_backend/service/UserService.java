@@ -9,6 +9,8 @@ import com.nmnd.d_book_backend.mapper.PublisherMapper;
 import com.nmnd.d_book_backend.mapper.UserMapper;
 import com.nmnd.d_book_backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -26,6 +28,8 @@ public class UserService {
 
         User user = userMapper.toUser(request);
 
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setCreatedTime(LocalDateTime.now());
         user.setUpdatedTime(LocalDateTime.now());
 

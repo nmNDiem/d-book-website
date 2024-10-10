@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/commons/Header';
 import Footer from './components/commons/Footer';
 import { Container } from 'react-bootstrap';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import BookDetails from './pages/BookDetails';
