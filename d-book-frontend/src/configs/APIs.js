@@ -8,9 +8,12 @@ export const endpoints = {
     'book-details': (bookId) => `/books/${bookId}`,
     'categories': '/categories',
     'receipts': '/receipts',
+
     'register': '/api/users/',
     'login': '/api/login/',
     'current-user': '/api/current-user/',
+    
+    'banners': '/banners',
 }
 
 console.info(cookie.load('token'))

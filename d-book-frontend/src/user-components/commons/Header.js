@@ -6,6 +6,7 @@ import './HeaderStyle.css';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../configs/Contexts';
 import APIs, { endpoints } from '../../configs/APIs';
+import MySpinner from './MySpinner';
 
 const Header = () => {
   const { quantityInCart, } = useContext(CartContext);
@@ -38,8 +39,8 @@ const Header = () => {
             <Nav.Link as={Link} to={"/"}>Trang chủ</Nav.Link>
 
             <NavDropdown title="Danh mục" id="navbarScrollingDropdown" className="hover-dropdown">
-              {categories.length === 0
-                ? <Spinner animation="border" variant="secondary" />
+              {categories === null || categories.length === 0
+                ? <MySpinner/>
                 : categories.map((cate) => (
                   <NavDropdown.Item key={cate.id}>{cate.name}</NavDropdown.Item>
                 ))}
