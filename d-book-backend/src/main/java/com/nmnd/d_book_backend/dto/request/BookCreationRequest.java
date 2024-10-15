@@ -7,6 +7,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -22,7 +23,7 @@ public class BookCreationRequest {
     String isbn;
     String description;
     int publishedYear;
-    String image;
+    MultipartFile image;
     BigDecimal price;
     BigDecimal discountPercent;
     int stock;

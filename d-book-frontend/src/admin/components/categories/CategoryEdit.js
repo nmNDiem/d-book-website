@@ -1,10 +1,12 @@
 import React from 'react';
-import { Edit, SimpleForm, TextInput } from 'react-admin';
+import { BooleanInput, Edit, SimpleForm, TextInput } from 'react-admin';
 
 export const CategoryEdit = (props) => (
     <Edit {...props}>
         <SimpleForm>
             <TextInput source="name" />
+            <TextInput source="description" />
+            <BooleanInput source="active" />
         </SimpleForm>
     </Edit>
 );

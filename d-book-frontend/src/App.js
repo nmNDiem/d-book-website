@@ -1,20 +1,41 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import UserRoutes from './routes/UserRoutes';
-import AdminRoutes from './routes/AdminRoutes';
+import Header from './user-components/commons/Header';
+import Footer from './user-components/commons/Footer';
+import Home from './user-components/home/Home';
+import Login from './user-components/auth/Login';
+import Register from './user-components/auth/Register';
+import BookDetails from './user-components/book/BookDetails';
+import Cart from './user-components/cart/Cart';
+import { useReducer } from 'react';
+import { CartReducer } from './configs/Reducers';
+import { CartContext } from './configs/Contexts';
 import AdminDashboard from './admin/AdminDashboard';
 
 function App() {
+  const [quantityInCart, dispatch] = useReducer(CartReducer, 0);
+
   return (
-    <AdminDashboard />
-    // <BrowserRouter>
-    //     <Routes>
-    //       <Route path='/*' element={<UserRoutes />} />
-    //       <Route path='/admin/*' element={<AdminRoutes />} />
-    //       <Route path='/admin/login' element={<AdminRoutes />} />
-    //     </Routes>
-    // </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/admin/*" element={<AdminDashboard />} />
+
+          <Route path="/*" element={
+            <CartContext.Provider value={{ quantityInCart, dispatch }}>
+              <Header />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/books/:bookId' element={<BookDetails />} />
+                <Route path='/cart' element={<Cart />} />
+              </Routes>
+              <Footer />
+            </CartContext.Provider>
+          } />
+        </Routes >
+      </BrowserRouter>
   );
 }
 

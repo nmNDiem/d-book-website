@@ -14,7 +14,9 @@ import com.nmnd.d_book_backend.repository.PublisherRepository;
 import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,11 +32,14 @@ public class BookService {
     private AuthorRepository authorRepo;
     @Autowired
     private PublisherRepository publisherRepo;
+    @Autowired
+    private ImageService imageService;
 
-    public BookResponse createBook(BookCreationRequest request) {
+    public BookResponse createBook(BookCreationRequest request) throws IOException {
         Category category = categoryRepo.getReferenceById(request.getCategoryId());
         Author author = authorRepo.getReferenceById(request.getAuthorId());
         Publisher publisher = publisherRepo.getReferenceById(request.getPublisherId());
+        MultipartFile file = request.getImage();
 
         Book book = bookMapper.toBook(request);
 
@@ -44,6 +49,11 @@ public class BookService {
         book.setRating(0);
         book.setCreatedTime(LocalDateTime.now());
         book.setUpdatedTime(LocalDateTime.now());
+
+        if (file != null && !file.isEmpty()) {
+            String imageUrl = imageService.uploadImage(file);
+            book.setImage(imageUrl);
+        }
 
         book = bookRepo.save(book);
 
