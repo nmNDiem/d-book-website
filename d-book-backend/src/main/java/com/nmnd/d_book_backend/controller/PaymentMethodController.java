@@ -5,6 +5,7 @@ import com.nmnd.d_book_backend.dto.response.PaymentMethodResponse;
 import com.nmnd.d_book_backend.service.PaymentMethodService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class PaymentMethodController {
     @Autowired
     private PaymentMethodService paymentMethodService;
 
-    @PostMapping
-    PaymentMethodResponse createPaymentMethod(@RequestBody PaymentMethodRequest request){
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    PaymentMethodResponse createPaymentMethod(@ModelAttribute PaymentMethodRequest request){
         return paymentMethodService.createPaymentMethod(request);
     }
 

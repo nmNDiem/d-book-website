@@ -19,6 +19,7 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)   // cac chuoi random ngau nhien
     int id;
     String name;
+    @Column(columnDefinition = "LONGTEXT")
     String bio;
     LocalDateTime createdTime;
     LocalDateTime updatedTime;

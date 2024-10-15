@@ -5,6 +5,7 @@ import com.nmnd.d_book_backend.dto.response.CategoryResponse;
 import com.nmnd.d_book_backend.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @PostMapping
-    CategoryResponse createCategory(@RequestBody CategoryRequest request){
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    CategoryResponse createCategory(@ModelAttribute CategoryRequest request){
         return categoryService.createCategory(request);
     }
 

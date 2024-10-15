@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,10 +25,17 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private ImageService imageService;
 
-    public UserResponse createUser(UserCreationRequest request) {
+    public UserResponse createUser(UserCreationRequest request) throws IOException {
+        MultipartFile file = request.getImage();
 
         User user = userMapper.toUser(request);
+        if (file != null && !file.isEmpty()) {
+            String imageUrl = imageService.uploadImage(file);     // up len cloudinary, tra ve url
+            user.setImage(imageUrl);
+        }
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         user.setPassword(passwordEncoder.encode(request.getPassword()));

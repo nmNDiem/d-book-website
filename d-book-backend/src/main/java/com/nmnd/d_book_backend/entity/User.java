@@ -26,7 +26,7 @@ public class User {
     String title;
     String phone;
     String address;
-    String avatar;
+    String image;
     boolean active;
 
     LocalDateTime createdTime;

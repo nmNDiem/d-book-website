@@ -22,6 +22,10 @@ import { CategoryEdit } from './components/categories/CategoryEdit';
 import { FaBuilding, FaUserGroup, FaUserPen } from 'react-icons/fa6';
 import { ImBooks } from 'react-icons/im';
 import { MdPayment } from 'react-icons/md';
+import { FaRegImages } from 'react-icons/fa';
+import BannerList from './components/banners/BannerList';
+import BannerEdit from './components/banners/BannerEdit';
+import BannerCreate from './components/banners/BannerCreate';
 
 const AdminDashboard = () => {
     return (
@@ -31,6 +35,7 @@ const AdminDashboard = () => {
             <Resource name="authors" icon={FaUserPen} list={AuthorList} edit={AuthorEdit} create={AuthorCreate} />
             <Resource name="publishers" icon={FaBuilding} list={PublisherList} edit={PublisherEdit} create={PublisherCreate} />
             <Resource name="paymentMethods" icon={MdPayment} list={PaymentMethodList} edit={PaymentMethodEdit} create={PaymentMethodCreate} />
+            <Resource name="banners" icon={FaRegImages} list={BannerList} edit={BannerEdit} create={BannerCreate} />
             <Resource name="users" icon={FaUserGroup} list={UserList} edit={UserEdit} create={UserCreate} />
         </Admin>
     );

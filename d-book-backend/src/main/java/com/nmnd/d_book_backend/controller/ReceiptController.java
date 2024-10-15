@@ -8,6 +8,7 @@ import com.nmnd.d_book_backend.service.AuthorService;
 import com.nmnd.d_book_backend.service.ReceiptService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +20,8 @@ public class ReceiptController {
     @Autowired
     private ReceiptService receiptService;
 
-    @PostMapping
-    ReceiptResponse createReceipt(@RequestBody ReceiptRequest request){
+    @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    ReceiptResponse createReceipt(@ModelAttribute ReceiptRequest request){
         return receiptService.createReceipt(request);
     }
 

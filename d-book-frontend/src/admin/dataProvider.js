@@ -31,25 +31,25 @@ const dataProvider = {
     create: (resource, params) => {
         const formData = new FormData();
     
-        // Thêm thông tin sách vào FormData
+        // Thêm các trường vào FormData
         Object.keys(params.data).forEach(key => {
-            if (key !== 'image') {  // ảnh được xử lý riêng
+            if (key !== 'image') {  // Chỉ xử lý riêng cho hình ảnh
                 formData.append(key, params.data[key]);
             }
         });
     
-        // Thêm file ảnh vào FormData (nếu có)
+        // Thêm file hình ảnh
         if (params.data.image && params.data.image.rawFile) {
-            formData.append('file', params.data.image.rawFile); // 'file' là tên dùng để upload ở backend
+            formData.append('image', params.data.image.rawFile);
         }
     
         return httpClient(`${apiUrl}/${resource}`, {
             method: 'POST',
-            body: formData, // Gửi dưới dạng multipart/form-data
+            body: formData,
         }).then(({ json }) => ({
             data: { ...json, id: json.id },
         }));
-    },    
+    },   
     update: (resource, params) => {
         const formData = new FormData();
     
@@ -60,7 +60,7 @@ const dataProvider = {
         });
     
         if (params.data.image && params.data.image.rawFile) {
-            formData.append('file', params.data.image.rawFile);
+            formData.append('image', params.data.image.rawFile);
         }
     
         return httpClient(`${apiUrl}/${resource}/${params.id}`, {

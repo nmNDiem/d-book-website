@@ -5,6 +5,7 @@ const AuthorCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="name" />
+            <TextInput source="bio" />
         </SimpleForm>
     </Create>
 );
